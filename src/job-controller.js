@@ -1,49 +1,44 @@
 (function(){
-  var app = angular.module( 'database', []);
+  var ngResource = require( 'angular-resource');
+  var app = angular.module( 'database', ['ngResource']);
 
-  app.controller( 'JobController', ['$http', '$scope', JobController] );
-  function JobController( $http, $scope ){
+  app.controller( 'JobController', ['$resource', '$http', '$scope', JobController] );
 
-     getJobs();
-
-     function getJobs(){
-        $http.get( 'http://localhost:1200/jobs').success( function( response ){
-           $scope.jobs = response;
-        });
-     }
-
+  function JobController( $resource, $http, $scope ){
      var view = this;
+
+     var Jobs = $resource( '/jobs/:jobId', {jobId: '@jobId'} );
+
+     Jobs.query( function( data ){
+       $scope.JobLists = data;
+     });
+
+     view.JobLists = $scope.JobLists;
+
      view.addJob = addJob;
      view.deleteJob = deleteJob;
      view.NewJob = {};
 
      function addJob( data ){
+       var newJob = new Jobs( {
+         Company: data.Company,
+         Title: data.Title,
+         Status: 'Application Submitted',
+         CreatedOn: new Date()
+       });
 
-        data.CreatedOn = new Date();
-        data.Status = 'Application Submitted'
-
-        var parameter = JSON.stringify( data );
-  		$http.post( 'http://localhost:1200/jobs', parameter ).success( function( response ){
-  			console.log( response );
-  		});
-
-        view.NewJob = {};
-        getJobs();
+       // send and reset data
+       newJob.$save();
+       data = {};
      }
-
 
      function deleteJob( data ){
-        var deleteUrl = "http://localhost:1200/jobs?objectId={id}"
-        deleteUrl = deleteUrl.replace( '{id}', data._id );
+       console.log( data );
+       var deleteJob = new Jobs({
+          jobId: data._id
+       });
 
-        var parameter = JSON.stringify( data );
-
-        $http.delete( deleteUrl ).success( function( response ){
-           console.log( response );
-        });
-
-        getJobs();
+       deleteJob.$remove();
      }
   }
-
 })();

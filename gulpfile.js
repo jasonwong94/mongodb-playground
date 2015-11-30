@@ -4,8 +4,7 @@ var concat = require( 'gulp-concat' );
 var server = require( 'gulp-live-server' );
 
 var SERVER_FILE = 'server.js'
-var CLIENT_FILE = './build/app.js'
-var SOURCE_DIR = './src'
+var CLIENT_FILE = 'app.js'
 
 gulp.task( 'default', function(){
   // loads the server
@@ -14,14 +13,15 @@ gulp.task( 'default', function(){
 
   // re-execute the server file if any changes were made
   gulp.watch( SERVER_FILE, function(){
+    console.log( 're-running server')
     localhost.start.bind( localhost )();
   })
 
-  gulp.watch( 'job-controller.js', ['browserify'])
+  gulp.watch( './src/job-controller.js', ['browserify'])
 });
 
 gulp.task( 'browserify', function(){
-  gulp.src( SOURCE_DIR + 'job-controller.js' )
+  gulp.src( './src/app.js' )
     .pipe( browserify({
       insertGlobals: true
     }) )
