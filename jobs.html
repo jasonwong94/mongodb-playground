@@ -13,11 +13,7 @@
 
 		<!-- font awesome -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
-		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.min.js">
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js">
-		<script src="job-controller.js"></script>
+		<script src="app.js"></script>
 	</head>
 	<body ng-app="database" style="margin: 20px">
 		<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -155,22 +151,19 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="job in jobs">
-						<td>{{job.Company}}</td>
-						<td>{{job.Title}}</td>
-						<td>{{job.Status}}</td>
-						<td>{{job.CreatedOn | date}}</td>
+					<tr ng-repeat="Job in JobLists">
+						<td>{{Job.Company}}</td>
+						<td>{{Job.Title}}</td>
+						<td>{{Job.Status}}</td>
+						<td>{{Job.CreatedOn | date}}</td>
 						<td>
 							<i class="fa fa-info"></i>
 							<i class="fa fa-pencil"></i>
-							<button class="fa fa-trash" ng-click="ctrl.deleteJob( job )"></button>
+							<button class="fa fa-trash" ng-click="ctrl.deleteJob( Job )"></button>
 						</td>
 					</tr>
 				</tbody>
 			</table>
-			<div ng-if="restaurants.error">
-				ERROR!!
-			</div>
 		</section>
 	</body>
 </html>

@@ -4,10 +4,11 @@
   "description": "'a working playground with MEAN stack'",
   "main": "job-controller.js",
   "dependencies": {
+    "angular-route": "^1.4.8",
     "assert": "^1.3.0",
-    "mongodb": "^2.0.43",
+    "body-parser": "^1.14.1",
     "express": "^4.13.3",
-    "body-parser": "^1.14.1"
+    "mongodb": "^2.0.43"
   },
   "devDependencies": {
     "angular": "^1.4.8",
