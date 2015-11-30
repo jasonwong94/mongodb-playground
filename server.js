@@ -34,19 +34,21 @@ app.get( '/', function( req, res ){
 
 app.get( '/jobs', function( req, res ){
    findJobs( database, function( test ){
-      //
       res.json( test );
    })
 });
 
 app.post( '/jobs', jsonParser, function( req, res ){
    insertJob( database, req.body, function(){
-      //
+      res.sendStatus( 200 );
    })
 } );
 
-app.delete( '/jobs', urlencodedParser, function( req, res ){
-    deleteJob( database, req.query, function( test ){
+app.delete( '/jobs/:jobId', function( req, res ){
+    console.log( req.params.jobId );
+    // console.log( req.headers );
+    // console.log( json.stringify( req.headers ))
+    deleteJob( database, req.params.jobId, function( test ){
       res.sendStatus( 200 );
     })
 })
@@ -85,19 +87,12 @@ var findJobs = function( db, callback ){
    });
 }
 
-var deleteJob = function( db, data, callback ){
-  console.log( data.objectId );
-  // db.collection( 'jobLists', function( err, collection){
-  //   collection.remove({_id: ObjectID('563af44e1ee259bd05ca4c27')});
-  // })
-  db.collection( 'jobLists ').deleteOne({
-    "_id": ObjectId( "563af44e1ee259bd05ca4c27" )
-  }, function( err, result ){
-    if( err ){
-      console.log( err )
-    } else {
-      console.log( result )
-      callback( result );
-    }
+var deleteJob = function( db, id, callback ){
+  db.collection( 'jobLists' ).deleteOne({
+    _id: ObjectId( id )
+  }, function( err, results ){
+    console.log( results );
+    callback();
   });
+  // console.log( data )
 }
