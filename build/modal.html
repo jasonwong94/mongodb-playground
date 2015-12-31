@@ -1,0 +1,126 @@
+<div class="modal fade" id="detailsModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="ctrl.resetJobDetail()">x</button>
+        <h4 class="modal-title">Add a job!</h4>
+      </div>
+
+      <div class="modal-body">
+        <form role="form"
+          autocomplete="off"
+          style="font-size: 12px">
+          <div class="row">
+            <div class="form-group col-sm-6">
+              <label for="company"
+                >Company</label>
+                <div class=input-group>
+                  <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-briefcase"></span>
+                  </span>
+                  <input id="company"
+                    type="text"
+                    name="company"
+                    class="form-control"
+                    ng-model="ctrl.JobDetail.Company"/>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-6">
+              <label for="title">Title</label>
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-user"></span>
+                </span>
+                <input id="title"
+                  type="text"
+                  name='title'
+                  class="form-control"
+                  ng-model="ctrl.JobDetail.Title"/>
+              </div>
+            </div>
+          </div>
+
+          <fieldset class="row">
+            <div class="form-group col-sm-6">
+              <label for="website">Website</label>
+              <div class="input-group">
+                <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-globe"></span>
+                </span>
+                <input id="website"
+                  type="text"
+                  name='website'
+                  class="form-control"
+                  ng-model="ctrl.JobDetail.Website"/>
+              </div>
+            </div>
+
+            <div class="form-group col-sm-6">
+                <label for="email">Email</label>
+                <div class="input-group">
+                <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-envelope"></span>
+                </span>
+                <input id="email"
+                  type="text"
+                  name='website'
+                  class="form-control"
+                  ng-model="ctrl.JobDetail.Email"/>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset ng-if="!ctrl.isAddNewJob()">
+            <div class="form-group">
+              <label for="applicationStatus">Application Status: </label>
+              <select id="applicationStatus" class="form-control" ng-model="ctrl.JobDetail.Status">
+                <option ng-repeat="status in ctrl.ApplicationStatus" value="{{status.name}}"> {{status.name}}</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <h3>Address</h3>
+              <div class="row">
+              <div class="form-group col-sm-6">
+                <label for="address1">Line 1</label>
+                <input id="address1"
+                  type="text"
+                  name='address'
+                  class="form-control"
+                  ng-model="ctrl.JobDetail.Address[0]"/>
+              </div>
+
+              <div class="form-group col-sm-6">
+                <label for="address2">Line 2</label>
+                <input id="address2"
+                  type="text"
+                  name='address'
+                  class="form-control"
+                  ng-model="ctrl.JobDetail.Address[1]"/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="city">City</label>
+              <input id="city"
+                type="text"
+                name='address'
+                class="form-control"
+                ng-model="ctrl.JobDetail.Address[2]"/>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="ctrl.submitJob()">
+          <span class="glyphicon glyphicon-floppy-disk"></span> Submit!
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
