@@ -1,4 +1,4 @@
-<div class="modal fade" id="detailsModal" role="dialog">
+<div class="modal fade" id="detailsModal" role="dialog" ng-app="database" ng-controller="ModalController as ctrl">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -76,8 +76,18 @@
             <div class="form-group">
               <label for="applicationStatus">Application Status: </label>
               <select id="applicationStatus" class="form-control" ng-model="ctrl.JobDetail.Status">
-                <option ng-repeat="status in ctrl.ApplicationStatus" value="{{status.name}}"> {{status.name}}</option>
+                <option ng-repeat="Status in ctrl.ApplicationStatus" value="{{Status.Name}}"> {{Status.Name}}</option>
               </select>
+            </div>
+            <div class="form-group">
+              <div class="checkbox-inline">
+                <label for="contract"></label>
+                <input type="checkbox" value="contractSubmitted" id="contact">Contract Submitted</input>
+              </div>
+              <div class="checkbox-inline">
+                <label for="confidential"></label>
+                <input type="checkbox" value="employmentConfidential" id="confidential">Employment Confidential Form</input>
+              </div>
             </div>
           </fieldset>
 

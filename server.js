@@ -12,7 +12,7 @@ var MongoClient = mongodb.MongoClient;
 var ObjectId = require( 'mongodb').ObjectID;
 
 var URL = 'mongodb://localhost:27017/jobs';
-var PORT_NUMBER = 9900;
+var PORT_NUMBER = 1220;
 var VIEW_DIR = __dirname + '/build'
 
 var numAttempts = 0;
