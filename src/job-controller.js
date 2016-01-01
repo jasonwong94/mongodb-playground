@@ -29,6 +29,8 @@
      view.resetJobDetail = resetJobDetail;
      view.initializeJob = initializeJob;
      view.updateJobList = updateJobList;
+     view.setJobLabel = setJobLabel;
+     view.isSuccess = isSuccess;
 
      view.ApplicationStatus = applicatonStatus.status;
      view.JobDetail = {};
@@ -37,6 +39,7 @@
 
      function initializeJob( data ){
        view.JobLists = data;
+       view.JobLists.forEach(setJobLabel)
      }
 
      function editJob( id ){
@@ -75,6 +78,7 @@
          newJob.$save().then(updateJobList);
        } else {
          newJob.id = view.JobDetail._id;
+         newJob.CreatedOn = view.JobDetail.CreatedOn;
          newJob.UpdatedOn = new Date();
          newJob.Status = view.JobDetail.Status;
 
@@ -82,6 +86,10 @@
        }
 
        resetJobDetail();
+     }
+
+     function isSuccess(){
+       return view.success;
      }
 
      function setSuccess(){
@@ -94,6 +102,12 @@
           jobId: data._id
        });
        deleteJob.$remove( {jobId: deleteJob.jobId} ).then(updateJobList);
+     }
+
+     function setJobLabel( job ){
+       view.ApplicationStatus.forEach( function(element, index){
+         if( element.Name == job.Status ) job.Style= element.Style
+       } )
      }
 
      updateJobList();
