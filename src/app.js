@@ -2,7 +2,9 @@
 
 var angular = require( 'angular' );
 
-var app = angular.module( 'database', [] );
+var app = angular.module( 'database', [
+  require('angular-mocks/ngMock')
+] );
 
 //config
 app.config( require('./app-config.js') );
