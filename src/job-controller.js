@@ -27,6 +27,8 @@
      view.setAddJobStatus = setAddJobStatus;
      view.isAddNewJob = isAddNewJob;
      view.resetJobDetail = resetJobDetail;
+     view.initializeJob = initializeJob;
+     view.updateJobList = updateJobList;
 
      view.ApplicationStatus = applicatonStatus.status;
      view.JobDetail = {};
