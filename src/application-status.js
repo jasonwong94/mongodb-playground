@@ -1,23 +1,29 @@
 module.exports = {
   status: [
     {
-      name: "Application Submitted",
-      description: "Application submitted online or emailed to HR"
+      Name: "Application Submitted",
+      Description: "Application submitted online or emailed to HR",
+      Style: "label-default"
     },{
-      name: "Interview",
-      description: "On-site/Off-site interview offered by the company. Note: there maybe mutiple rounds"
+      Name: "Interview",
+      Description: "On-site/Off-site interview offered by the company. Note: there maybe mutiple rounds",
+      Style: "label-warning"
     },{
-      name: "Rejected",
-      description: "Company did not offer position"
+      Name: "Rejected",
+      Description: "Company did not offer position",
+      Style: "label-danger"
     },{
-      name: "Offered",
-      description: "Position formally offered. Signed paper work needs to submitted"
+      Name: "Offered",
+      Description: "Position formally offered. Signed paper work needs to submitted",
+      Style: "label-success"
     },{
-      name: "Pending Result",
-      description: "Waiting to hear back from interview"
+      Name: "Pending Result",
+      Description: "Waiting to hear back from interview",
+      Style: "label-info"
     },{
-      name: "Accepted",
-      description: "Job offically accepted, paper work signed and submitted"
+      Name: "Accepted",
+      Description: "Job offically accepted, paper work signed and submitted",
+      Style: "label-default"
     }
   ]
 };
