@@ -1,5 +1,4 @@
-var ngRoute = require( 'angular-route');
-var app = angular.module( 'database', ['ngRoute'] );
+var app = angular.module( 'database' );
 
 app.config( route );
 
@@ -7,7 +6,7 @@ function route ($routeProvider){
   $routeProvider
     .when( '/', {
       controller: JobController,
-      templateUrl: './job.html'
+      templateUrl: './jobs.html'
     })
     .otherwise({
       redirectTo: '/'

@@ -1,14 +1,20 @@
 'use strict'
 
 var angular = require( 'angular' );
+var ngResource = require( 'angular-resource');
+var ngRoute = require( 'angular-route');
+// var ngMock = require('angular-mocks');	
 
 var app = angular.module( 'database', [
-  require('angular-mocks/ngMock')
+  // 'ngMock',
+  'ngResource',
+  'ngRoute'
 ] );
 
 //config
-app.config( require('./app-config.js') );
+require('./api-service.js')
+
 
 //controllers
-app.controller( 'JobController', require('./job-controller.js') );
-app.controller( 'ModalController', require( './modal-controller.js'));
+require('./job-controller.js')
+// app.controller( 'ModalController', require( './modal-controller.js'));

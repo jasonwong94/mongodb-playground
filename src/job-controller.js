@@ -1,24 +1,14 @@
 (function(){
-  var ngResource = require( 'angular-resource');
-  var ngRoute = require( 'angular-route');
   var applicatonStatus = require( './application-status' );
-  var app = angular.module( 'database', ['ngResource', 'ngRoute']);
+  var app = angular.module( 'database');
 
-  app.controller( 'JobController', ['$resource', '$window', '$http', '$scope', '$q', JobController] );
+  app.controller( 'JobController', ['$window', '$scope', '$q', 'APIService', JobController] );
 
-  function JobController( $resource, $http, $scope, $window, $q ){
+  function JobController( $scope, $window, $q, APIService ){
      var view = this;
 
-     var Jobs = $resource( '/jobs/', {}, {
-       query: { method: "GET", isArray: true },
-       create: { method: "POST" },
-       get: { method: "GET" },
-       update: { method: "PUT", url: '/jobs/update/:jobId' },
-       remove: { method: "DELETE", url: '/jobs/remove/:jobId '}
-     })
-    //  var Jobs = $resource( '/jobs/:jobId', {jobId: '@jobId'} );
      function updateJobList(){
-       Jobs.query().$promise.then( initializeJob );
+       APIService.query().$promise.then( initializeJob );
      }
 
      view.submitJob = submitJob;
@@ -65,7 +55,7 @@
      }
 
      function submitJob(){
-       var newJob = new Jobs( {
+       var newJob = new APIService( {
          Company: view.JobDetail.Company,
          Title: view.JobDetail.Title,
        });
@@ -98,7 +88,7 @@
 
      function deleteJob( data ){
        console.log( data );
-       var deleteJob = new Jobs({
+       var deleteJob = new APIService({
           jobId: data._id
        });
        deleteJob.$remove( {jobId: deleteJob.jobId} ).then(updateJobList);
