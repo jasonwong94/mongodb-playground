@@ -1,6 +1,10 @@
-{'Title': 'Software Developer', 'Company': 'Google', 'Status': 'Application Created' }
-{'Title': 'Front-end Developer', 'Company': 'Desire2Learn', 'Status': 'Application Created'}
+{'Title': 'Software Developer', 'Company': 'Google', 'Status': 'Application Submitted' }
+{'Title': 'Front-end Developer', 'Company': 'Desire2Learn', 'Status': 'Application Submitted'}
 {'Title': 'Back-end Developer', 'Company':'phpLabs', 'Status': 'Interview'}
 {'Title': 'Embedded Developer', 'Company':'RoboticsABC', 'Status': 'Interview'}
 {'Title': 'C# Developer', 'Company': 'ASPnet', 'Status': 'Rejected'}
 {'Title': 'Android Developer', 'Company':'AndroidDevs', 'Status': 'Offered'}
+{'Title': 'iOS Developer', 'Company':'iOSDevelopers', 'Status': 'Interview'}
+{'Title': 'PHP Developer', 'Company':'PHP Company', 'Status': 'Application Submitted'}
+{'Title': 'Embedded Developer', 'Company':'Lazer Company', 'Status': 'Rejected'}
+
