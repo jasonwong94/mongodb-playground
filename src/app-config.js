@@ -6,7 +6,7 @@ function route ($routeProvider){
   $routeProvider
     .when( '/', {
       controller: JobController,
-      templateUrl: './jobs.html'
+      templateUrl: './jobLists.html'
     })
     .otherwise({
       redirectTo: '/'

@@ -12,7 +12,7 @@ var MongoClient = mongodb.MongoClient;
 var ObjectId = require( 'mongodb').ObjectID;
 
 var URL = 'mongodb://localhost:27017/jobs';
-var PORT_NUMBER = 1220;
+var PORT_NUMBER = 1800;
 var VIEW_DIR = __dirname + '/build'
 
 var numAttempts = 0;
@@ -31,7 +31,7 @@ app.use( express.static ( VIEW_DIR ) );
 app.get( '/', function( req, res ){
    numAttempts++;
    console.log( 'attempt #: ' + numAttempts );
-   res.sendFile( VIEW_DIR + '/jobs.html' );
+   res.sendFile( VIEW_DIR + '/jobLists.html' );
 });
 
 app.get( '/jobs', function( req, res ){

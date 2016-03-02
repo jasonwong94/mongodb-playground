@@ -12,9 +12,9 @@ var app = angular.module( 'database', [
 ] );
 
 //config
-require('./api-service.js')
+require('./jobListAPI-service.js')
 
 
 //controllers
-require('./job-controller.js')
+require('./jobList-controller.js')
 // app.controller( 'ModalController', require( './modal-controller.js'));

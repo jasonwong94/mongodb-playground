@@ -31,16 +31,12 @@
 		</nav>
 
 		<h1>Jobs</h1>
-		<section ng-controller="JobController as ctrl">
+		<section ng-controller="JobListController as ctrl">
 			<div ng-if="!ctrl.JobLists.length">
 				<p>It seems like there aren't any record of your job applications.
 			</div>
 
-			<div ng-include="'modal.html'"></div>
-			<div class="alert alert-success" ng-if="ctrl.isSuccess">
-				<a href="#" class="close" data-dismiss="alert" aria-label="close" ng-click="ctrl.isSuccess = false"> &times;</a>
-				<div>{{ctrl.successMessage}}</div>
-			</div>
+			<div ng-include="'newJob.html'"></div>
 
 			<h4>Job Application Progress as of:</h4>
 
@@ -67,7 +63,7 @@
 						<th>Title</th>
 						<th>Application Status</th>
 						<th>Created On</th>
-						<th>Options</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -82,8 +78,6 @@
 						</td>
 						<td>{{Job.CreatedOn | date}}</td>
 						<td>
-							<i class="fa fa-info"></i>
-							<a href="#" data-toggle="modal" data-target="#detailsModal" class="fa fa-pencil" ng-click="ctrl.editJob( Job._id )"></a>
 							<a href="#" class="fa fa-trash" ng-click="ctrl.deleteJob( Job )"></a>
 							</button>
 						</td>
