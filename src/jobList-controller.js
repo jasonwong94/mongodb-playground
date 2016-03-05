@@ -51,7 +51,7 @@
      }
 
      function deleteJob( data ){
-      JobListAPI.$resource.remove( {jobId: data._id} ).then(updateJobList)
+      JobListAPI.remove( {jobId: data._id} ).$promise.then(updateJobList)
      }
 
      function setJobLabel( job ){
