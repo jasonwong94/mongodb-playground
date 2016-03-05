@@ -7,11 +7,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 var colors = require( 'colors' );
 var http= require( 'http').Server( app );
-var mongodb= require( 'mongodb' );
-var MongoClient = mongodb.MongoClient;
-var ObjectId = require( 'mongodb').ObjectID;
 
-var URL = 'mongodb://localhost:27017/jobs';
 var PORT_NUMBER = 1450;
 var VIEW_DIR = __dirname + '/build'
 
@@ -25,7 +21,7 @@ app.use( express.static ( VIEW_DIR ) );
 
 app.get( '/', function( req, res ){
    numAttempts++;
-   console.log( 'attempt #: ' + numAttempts );
+   console.log( 'attempt #: '.green);
    res.sendFile( VIEW_DIR + '/jobLists.html' );
 });
 

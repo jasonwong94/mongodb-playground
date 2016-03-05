@@ -15,7 +15,6 @@ Database.prototype.connect = function() {
 		else{
 			this.database = db;
 			console.log("Connected to database: " + URL)
-			console.log(this.database)
 		}
 	})
 };
