@@ -1,9 +1,17 @@
 <section ng-controller="JobController as ctrl">
 	<h1>Job Details for {{ctrl.Title}}, {{ctrl.Company}}!</h1>
 	<div class="container">
-		<h2>{{ctrl.Title}}</h2>
-		<h2>{{ctrl.Company}}</h2>
-		<h2>{{ctrl._id}}</h2>
-		<h2>{{ctrl.Status}}</h2>
+		<div class="col-md-10">
+			<h3><small>Title: </small>{{ctrl.Title}}</h3>
+			<h3><small>Company: </small>{{ctrl.Company}}</h3>
+			<h3><small>ID: </small>{{ctrl._id}}</h3>
+			<h3><small>Status: </small>{{ctrl.Status}}</h3>
+		</div>
+		<div class="col-md-2">
+			<section class="btn-group">
+				<button type="button" class="btn">Edit</button>
+				<button type="button" class="btn">Delete</button>
+			</section>
+		</div>
 	</div>
 </section>
