@@ -8,7 +8,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 var colors = require( 'colors' );
 var http= require( 'http').Server( app );
 
-var PORT_NUMBER = 1450;
+var PORT_NUMBER = 1350;
 var VIEW_DIR = __dirname + '/build'
 
 var numAttempts = 0;
@@ -36,6 +36,12 @@ app.post( '/jobs', jsonParser, function( req, res ){
       res.sendStatus( 200 );
    })
 } );
+
+app.get( '/jobs/info/:jobId', function(req, res){
+  MongoFunctions.findJob(req.params.jobId, function(job){
+    res.json(job);
+  })
+})
 
 app.put( '/jobs/update/:jobId', jsonParser, function( req, res){
     MongoFunctions.updateJob(req.params.jobId, req.body );

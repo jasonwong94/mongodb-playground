@@ -56,6 +56,22 @@ Database.prototype.insertJob = function(data, callback) {
 	)
 };
 
+Database.prototype.findJob = function(id, callback){
+	var cursor = database.collection(collectionName).find({
+		_id: ObjectId(id)
+	});
+
+	var results;
+	// callback(results)
+
+	cursor.each(function(err, doc){
+		if( doc!=null )
+			results = doc;
+		else
+			callback(results)
+	});
+}
+
 Database.prototype.updateJob = function(data, id, callback) {
 	database.collection(collectionName).update(
 		{_id: ObjectId(id)},

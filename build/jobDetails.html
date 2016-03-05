@@ -1,3 +1,9 @@
 <section ng-controller="JobController as ctrl">
-<h1>Job Details for {{ctrl.jobId}}!</h1>
+	<h1>Job Details for {{ctrl.Title}}, {{ctrl.Company}}!</h1>
+	<div class="container">
+		<h2>{{ctrl.Title}}</h2>
+		<h2>{{ctrl.Company}}</h2>
+		<h2>{{ctrl._id}}</h2>
+		<h2>{{ctrl.Status}}</h2>
+	</div>
 </section>

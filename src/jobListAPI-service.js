@@ -13,6 +13,8 @@
         query: { method: "GET", isArray: true },
         create: { method: "POST" },
         remove: { method: "DELETE", url: '/jobs/remove/:jobId '},
+        getJob: { method: "GET", url: '/jobs/info/:jobId'},
+        updateJob: { method: "PUT", url: '/jobs/update/:jobId'}
       }
     );
   });
