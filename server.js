@@ -22,7 +22,7 @@ app.use( express.static ( VIEW_DIR ) );
 app.get( '/', function( req, res ){
    numAttempts++;
    console.log( 'attempt #: '.green);
-   res.sendFile( VIEW_DIR + '/jobLists.html' );
+   res.sendFile( VIEW_DIR + '/index.html' );
 });
 
 app.get( '/jobs', function( req, res ){

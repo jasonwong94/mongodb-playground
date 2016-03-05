@@ -1,89 +1,60 @@
-<html>
-	<head>
-		<title>Job Application</title>
+<h1>Jobs</h1>
+<section ng-controller="JobListController as ctrl">
+	<div ng-if="!ctrl.JobLists.length">
+		<p>It seems like there aren't any record of your job applications.
+	</div>
 
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<div ng-include="'newJob.html'"></div>
 
-		<!-- jQuery library -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<h4>Job Application Progress as of:</h4>
 
-		<!-- Latest compiled JavaScript -->
-		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-		<!-- font awesome -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-		<script src="app.js"></script>
-	</head>
-	<body ng-app="database" style="margin: 50px">
-		<nav class="navbar navbar-inverse navbar-fixed-top">
-		  <div class="container-fluid">
-		    <div class="navbar-header">
-		      <a class="navbar-brand" href="#">Job Database</a>
-		    </div>
-		    <div>
-		      <ul class="nav navbar-nav">
-		        <li class="active"><a href="#">Main Menu</a></li>
-		        <li><a href="add-job">Add Jobs</a></li>
-		      </ul>
-		    </div>
-		  </div>
-		</nav>
-
-		<h1>Jobs</h1>
-		<section ng-controller="JobListController as ctrl">
-			<div ng-if="!ctrl.JobLists.length">
-				<p>It seems like there aren't any record of your job applications.
-			</div>
-
-			<div ng-include="'newJob.html'"></div>
-
-			<h4>Job Application Progress as of:</h4>
-
-			<div class="progress">
-		    <div class="progress-bar progress-bar-success" role="progressbar" style="width:40%">
-		      Completed
-		    </div>
-		    <div class="progress-bar progress-bar-warning" role="progressbar" style="width:10%">
-		      In-progress
-		    </div>
-		    <div class="progress-bar progress-bar-danger" role="progressbar" style="width:20%">
-		      Overdue
-		    </div>
-				<div class="progress-bar progress-bar-info" role="progressbar" style="width:30%">
-		      Added
-		    </div>
-	  	</div>
-			<a href="#" data-toggle="modal" data-target="#detailsModal" ng-click="ctrl.setAddJobStatus( true )">Click here to add a job!</a>
-
-			<table class="table" ng-if="ctrl.JobLists.length">
-				<thead>
-					<tr>
-						<th>Company</th>
-						<th>Title</th>
-						<th>Application Status</th>
-						<th>Created On</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="Job in ctrl.JobLists">
-						<td>{{Job.Company}}</td>
-						<td>{{Job.Title}}</td>
-						<td>
-							<span ng-if="Job.Status == 'Application Submitted'">{{Job.Status}}</span>
-							<span class="label label-warning" ng-if="Job.Status == 'Interview'">{{Job.Status}}</span>
-							<span class="label label-danger" ng-if="Job.Status == 'Rejected'">{{Job.Status}}</span>
-							<span class="label label-success" ng-if="Job.Status == 'Offered'">{{Job.Status}}</span>
-						</td>
-						<td>{{Job.CreatedOn | date}}</td>
-						<td>
-							<a href="#" class="fa fa-trash" ng-click="ctrl.deleteJob( Job )"></a>
-							</button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</section>
-	</body>
-</html>
+	<div class="progress">
+    <div class="progress-bar progress-bar-success" role="progressbar" style="width:40%">
+      Completed
+    </div>
+    <div class="progress-bar progress-bar-warning" role="progressbar" style="width:10%">
+      In-progress
+    </div>
+    <div class="progress-bar progress-bar-danger" role="progressbar" style="width:20%">
+      Overdue
+    </div>
+		<div class="progress-bar progress-bar-info" role="progressbar" style="width:30%">
+      Added
+    </div>
+	</div>
+	<table class="table" ng-if="ctrl.JobLists.length">
+		<thead>
+			<tr>
+				<th>Company</th>
+				<th>Title</th>
+				<th>Application Status</th>
+				<th>Created On</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="Job in ctrl.JobLists">
+				<td>{{Job.Company}}</td>
+				<td>
+					<a href="#/jobs/{{Job._id}}">{{Job.Title}}</a>
+				</td>
+				<td>
+					<span ng-if="Job.Status == 'Application Submitted'">{{Job.Status}}</span>
+					<span class="label label-warning" ng-if="Job.Status == 'Interview'">{{Job.Status}}</span>
+					<span class="label label-danger" ng-if="Job.Status == 'Rejected'">{{Job.Status}}</span>
+					<span class="label label-success" ng-if="Job.Status == 'Offered'">{{Job.Status}}</span>
+				</td>
+				<td>{{Job.CreatedOn | date}}</td>
+				<td>
+					<a href="#" class="fa fa-trash" ng-click="ctrl.deleteJob( Job )"></a>
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="row">
+		<div class="col-md-offset-11 floating-button">
+		<a href="#" data-toggle="modal" data-target="#detailsModal" ng-click="ctrl.setAddJobStatus( true )">Add a job!</a>
+		</div>
+	</div>
+</section>
