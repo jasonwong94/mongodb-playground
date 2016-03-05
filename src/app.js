@@ -13,6 +13,8 @@ var app = angular.module( 'database', [
   'ngRoute'
 ] );
 
+//underscore
+require('./underscore-factory.js')
 
 //controller
 require('./job-controller.js')
