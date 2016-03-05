@@ -1,14 +1,18 @@
-var app = angular.module( 'database' );
+var app = angular.module( 'database');
 
 app.config( route );
 
 function route ($routeProvider){
   $routeProvider
     .when( '/', {
-      controller: JobController,
-      templateUrl: './jobLists.html'
+		controller: 'JobListController',
+		templateUrl: './jobLists.html'
+    })
+    .when( '/jobs/:jobId', {
+    	controller: 'JobController',
+    	templateUrl: './jobDetails.html'
     })
     .otherwise({
-      redirectTo: '/'
+		redirectTo: './jobs.html'
     })
 }

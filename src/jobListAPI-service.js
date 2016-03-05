@@ -3,7 +3,7 @@
 
   var ngResource = require( 'angular-resource');
   var ngRoute = require( 'angular-route');  
-  var app = angular.module('database', ['ngResource'] )
+  var app = angular.module('database' )
 
   app.factory('JobListAPI', function APIService( $resource ){
     return $resource( 
